@@ -1,0 +1,14 @@
+services:
+  laravel-blog:
+    container_name: app-laravel-blog
+    image: omahkoding/laravel-blog
+    build:
+      context: . #sourcodenya
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - laravel-blog-data:/var/www/html
+
+volumes:
+  laravel-blog-data:
