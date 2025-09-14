@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Pull Source Code') {
             steps {
-                echo 'Pull Source Code'
+                git branch: 'main', url: 'https://github.com/omahkoding/laravel-blog.git'
             }
         }
         stage('Testing Application') {
