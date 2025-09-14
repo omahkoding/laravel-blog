@@ -41,7 +41,9 @@ pipeline {
         }
         stage('Publish Container Image') {
             steps {
-                echo 'Publish Container Image'
+                 sh '''
+                docker compose push
+                '''
             }
         }
     }
