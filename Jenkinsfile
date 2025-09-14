@@ -34,7 +34,9 @@ pipeline {
         }
         stage('Deploy Container Application') {
             steps {
-                echo 'Deploy Container Application'
+                sh '''
+                docker compose up -d
+                '''
             }
         }
         stage('Publish Container Image') {
