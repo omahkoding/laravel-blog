@@ -7,6 +7,7 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/omahkoding/laravel-blog.git'
             }
         }
+        //cp /usr/share/nginx/html/laravel-blog/.env .env => copy file .env dari laravel blog  ke folder /opt/jenkins/
         stage('Copy env Variable') {
             steps {
                 sh '''
@@ -14,18 +15,21 @@ pipeline {
                 '''
             }
         }
-        stage('Testing Application') {
-            steps {
-                sh '''
-                composer install --dev --optimize-autoloader
-                composer require fakerphp/faker --dev
-                php artisan test
-                '''
-            }
-        }
+
+        //stage('Testing Application') {
+        //    steps {
+        //        sh '''
+        //        composer install --dev --optimize-autoloader
+        //        composer require fakerphp/faker --dev
+        //        php artisan test
+        //        '''
+        //    }
+        //}
         stage('Build Container Image') {
             steps {
-                echo 'Build Container Image'
+                sh '''
+                docker compose build
+                '''
             }
         }
         stage('Deploy Container Application') {
