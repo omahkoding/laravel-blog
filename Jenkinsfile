@@ -7,6 +7,13 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/omahkoding/laravel-blog.git'
             }
         }
+        stage('Copy env Variable') {
+            steps {
+                sh '''
+                cp /usr/share/nginx/html/laravel-blog/.env .env
+                '''
+            }
+        }
         stage('Testing Application') {
             steps {
                 sh '''
