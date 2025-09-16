@@ -123,4 +123,13 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'providers' => [
+        // ...
+        Jubaer\Zoom\ZoomServiceProvider::class,
+    ];
+    'aliases' => [
+        // ...
+        'Zoom' => Jubaer\Zoom\Facades\Zoom::class,
+    ];
+
 ];
